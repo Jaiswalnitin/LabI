@@ -57,7 +57,7 @@ def main():
         print('Service call failed, error=', e)
         sys.exit(-1)
     ns = rospy.get_namespace().replace('/', '')
-    body_name = "link1"
+    body_name = "base_link"
 
     if monitor.starting_time >= 0:
         rate = rospy.Rate(100)
@@ -66,6 +66,7 @@ def main():
 
     force = [monitor.fx, monitor.fy, monitor.fz]
     torque = [monitor.tx, monitor.ty, monitor.tz]
+    print(force, torque)
     wrench = Wrench()
     wrench.force = Vector3(*force)
     wrench.torque = Vector3(*torque)
